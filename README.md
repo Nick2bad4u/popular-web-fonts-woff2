@@ -2,12 +2,12 @@
 
 [![npm license.](https://flat.badgen.net/npm/license/popular-web-fonts-woff2?color=purple)](https://github.com/Nick2bad4u/popular-web-fonts-woff2/blob/main/LICENSE) [![npm total downloads.](https://flat.badgen.net/npm/dt/popular-web-fonts-woff2?color=pink)](https://www.npmjs.com/package/popular-web-fonts-woff2) [![latest GitHub release.](https://flat.badgen.net/github/release/Nick2bad4u/popular-web-fonts-woff2?color=cyan)](https://github.com/Nick2bad4u/popular-web-fonts-woff2/releases) [![GitHub stars.](https://flat.badgen.net/github/stars/Nick2bad4u/popular-web-fonts-woff2?color=yellow)](https://github.com/Nick2bad4u/popular-web-fonts-woff2/stargazers) [![GitHub forks.](https://flat.badgen.net/github/forks/Nick2bad4u/popular-web-fonts-woff2?color=green)](https://github.com/Nick2bad4u/popular-web-fonts-woff2/forks) [![GitHub open issues.](https://flat.badgen.net/github/open-issues/Nick2bad4u/popular-web-fonts-woff2?color=red)](https://github.com/Nick2bad4u/popular-web-fonts-woff2/issues) [![codecov.](https://flat.badgen.net/codecov/github/Nick2bad4u/popular-web-fonts-woff2?color=blue)](https://codecov.io/gh/Nick2bad4u/popular-web-fonts-woff2)
 
-Ready-to-use **popular web fonts in WOFF2 format** — use them in any website or app via CDN link, or install them through npm.
+Ready-to-use **popular web fonts in WOFF2 format** — use them in any website or app via CDN link.
 
 No build step needed. No tools to install. Just copy a URL.
 
-> Fonts are sourced from [Google Fonts](https://fonts.google.com/) and other popular open-source web font families.
-> They are committed directly to this repository so they can be served from a stable CDN URL.
+> Fonts are committed directly to this repository and served from a stable CDN (jsDelivr, GitHub raw, unpkg).
+> The npm package ships the **CLI tool only** — see [CLI usage](#cli-usage) if you want to run the pipeline yourself.
 
 ---
 
@@ -69,39 +69,28 @@ You can also browse a searchable index page on GitHub Pages: [`/index.html`](./i
 
 ---
 
-## Install via npm
+## Install via npm (CLI tool)
 
-If you use a bundler (Webpack, Vite, etc.) or a Node.js project, you can install the fonts as an npm package:
+The npm package ships the **CLI pipeline only** — the font files themselves are **not bundled**.
+Fonts are served from CDN; use the URLs above in your CSS directly.
 
 ```bash
-npm install popular-web-fonts-woff2
+npm install --save-dev popular-web-fonts-woff2
 ```
 
-Then reference the files from `node_modules`:
+or run it without installing:
 
-```css
-/* Vite / webpack — import the font file directly */
-@font-face {
-  font-family: "Inter";
-  src: url("popular-web-fonts-woff2/fonts/woff2/Inter/Inter-regular.woff2")
-    format("woff2");
-  font-display: swap;
-}
+```bash
+npx popular-web-fonts-woff2 --help
 ```
 
-Or read them in Node.js:
+The CLI lets you download source fonts and convert them to WOFF2 in your own project.
+See [CLI usage](#cli-usage) for all available flags.
 
-```js
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
-import { createRequire } from "node:module";
-
-const require = createRequire(import.meta.url);
-const pkgDir = join(require.resolve("popular-web-fonts-woff2/package.json"), "..");
-const fontBuffer = readFileSync(
-  join(pkgDir, "fonts", "woff2", "Inter", "Inter-regular.woff2")
-);
-```
+> **Why not bundle the fonts?**
+> The full font set is several GB — far too large for an npm package.
+> CDN delivery via jsDelivr / GitHub raw is faster, cheaper, and versioned.
+> Pin a release tag in your URL and you get the same file forever.
 
 ---
 

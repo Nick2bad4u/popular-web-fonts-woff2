@@ -43,7 +43,6 @@
             "import": "./dist/cli.js",
             "types": "./dist/cli.d.ts"
         },
-        "./fonts/*": "./fonts/*",
         "./package.json": "./package.json"
     },
     "main": "./dist/cli.js",
@@ -54,7 +53,6 @@
     "files": [
         "popular-web-fonts-woff2",
         "dist",
-        "fonts",
         "README.md",
         "LICENSE"
     ],
