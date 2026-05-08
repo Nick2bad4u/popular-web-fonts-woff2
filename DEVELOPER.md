@@ -106,7 +106,7 @@ Verifies `ttf2woff2` is installed and runs a live smoke-test conversion.
 
 ## CLI tool usage
 
-The CLI (`dist/src/cli.js`) provides fine-grained control for single-directory or manifest-driven workflows.
+The CLI (`dist/cli.js`) provides fine-grained control for single-directory or manifest-driven workflows.
 
 ### Plan only (safe default)
 

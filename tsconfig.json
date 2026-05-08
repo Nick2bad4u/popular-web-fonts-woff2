@@ -41,12 +41,12 @@
         ],
         "listEmittedFiles": false,
         "listFiles": false,
-        "module": "ESNext",
+        "module": "NodeNext",
         "moduleDetection": "auto",
-        "moduleResolution": "bundler",
+        "moduleResolution": "NodeNext",
         "newLine": "crlf",
         "noCheck": false,
-        "noEmit": true,
+        "noEmit": false,
         "noEmitHelpers": false,
         "noEmitOnError": true,
         "noErrorTruncation": true,
@@ -63,6 +63,7 @@
         "noUncheckedSideEffectImports": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
+        "outDir": "./dist",
         "paths": {
             "@assets/*": [
                 "./assets/*"
@@ -80,6 +81,7 @@
         "resolvePackageJsonExports": true,
         "resolvePackageJsonImports": true,
         "rewriteRelativeImportExtensions": true,
+        "rootDir": "./src",
         "skipLibCheck": true,
         "sourceMap": true,
         "strict": true,
@@ -91,10 +93,9 @@
         "stripInternal": false,
         "target": "ES2024",
         "traceResolution": false,
-        "tsBuildInfoFile": "./.cache/tsbuildinfo/tsconfig.app.tsbuildinfo",
+        "tsBuildInfoFile": "./.cache/tsbuildinfo/tsconfig.build.tsbuildinfo",
         "types": [
-            "vite/client",
-            "vitest/globals"
+            "node"
         ],
         "useDefineForClassFields": true,
         "useUnknownInCatchVariables": true,
@@ -112,11 +113,7 @@
     ],
     "include": [
         "src/**/*.d.ts",
-        "src/**/*.ts",
-        "test/**/*.d.ts",
-        "test/**/*.ts",
-        "vite.config.ts",
-        "vitest.stryker.config.ts"
+        "src/**/*.ts"
     ],
     "typeAcquisition": {
         "enable": true,

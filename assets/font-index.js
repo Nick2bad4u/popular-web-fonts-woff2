@@ -193,6 +193,7 @@ function openLinkModal(links, fileName, triggerButton) {
  *         fileName: string;
  *         outputPath: string;
  *         converted: boolean;
+ *         sourcePath?: string;
  *     }[],
  * ][]} groups
  *
@@ -217,6 +218,7 @@ function renderFamilyLinks(groups) {
  *     fileName: string;
  *     outputPath: string;
  *     converted: boolean;
+ *     sourcePath?: string;
  * }[]}
  */
 let entries = [];
@@ -225,18 +227,18 @@ let entries = [];
  * @param {string} outputPath
  * @param {string} family
  * @param {string} fileName
+ * @param {string} marker
  *
  * @returns {string}
  */
-function toRelativePath(outputPath, family, fileName) {
+function toRelativePath(outputPath, family, fileName, marker) {
     const normalized = outputPath.replaceAll("\\", "/");
-    const marker = "/fonts/woff2/";
     const markerIndex = normalized.indexOf(marker);
     if (markerIndex >= 0) {
         return normalized.slice(markerIndex + 1);
     }
 
-    return `fonts/woff2/${family}/${fileName}`;
+    return `${marker.slice(1)}${family}/${fileName}`;
 }
 
 /**
@@ -246,7 +248,7 @@ function toRelativePath(outputPath, family, fileName) {
  * @returns {string}
  */
 function toCdnUrl(version, relativePath) {
-    return `https://cdn.jsdelivr.net/gh/Nick2bad4u/nerd-fonts-woff2@${version}/${relativePath}`;
+    return `https://cdn.jsdelivr.net/gh/Nick2bad4u/popular-web-fonts-woff2@${version}/${relativePath}`;
 }
 
 /**
@@ -272,25 +274,25 @@ function buildPopularLinks(version, relativePath) {
             iconClass: "nf-fa-github",
             label: "Raw GitHub",
             logo: "GH",
-            url: `https://raw.githubusercontent.com/Nick2bad4u/nerd-fonts-woff2/${version}/${relativePath}`,
+            url: `https://raw.githubusercontent.com/Nick2bad4u/popular-web-fonts-woff2/${version}/${relativePath}`,
         },
         {
             iconClass: "nf-dev-npm",
             label: "jsDelivr (npm)",
             logo: "NPM",
-            url: `https://cdn.jsdelivr.net/npm/nerd-font-woff2@${version}/${relativePath}`,
+            url: `https://cdn.jsdelivr.net/npm/popular-web-fonts-woff2@${version}/${relativePath}`,
         },
         {
             iconClass: "nf-md-package_variant",
             label: "unpkg (npm)",
             logo: "U",
-            url: `https://unpkg.com/nerd-font-woff2@${version}/${relativePath}`,
+            url: `https://unpkg.com/popular-web-fonts-woff2@${version}/${relativePath}`,
         },
         {
             iconClass: "nf-fa-bolt",
             label: "Raw Githack",
             logo: "GK",
-            url: `https://rawcdn.githack.com/Nick2bad4u/nerd-fonts-woff2/${version}/${relativePath}`,
+            url: `https://rawcdn.githack.com/Nick2bad4u/popular-web-fonts-woff2/${version}/${relativePath}`,
         },
     ];
 }
@@ -344,6 +346,7 @@ function classifyVariant(fileName) {
  *     fileName: string;
  *     outputPath: string;
  *     converted: boolean;
+ *     sourcePath?: string;
  * }} entry
  * @param {string} styleFilter
  * @param {string} variantFilter
@@ -416,9 +419,20 @@ function render() {
             const relativePath = toRelativePath(
                 entry.outputPath,
                 entry.family,
-                entry.fileName
+                entry.fileName,
+                "/fonts/woff2/"
             );
             const cdnLinks = buildPopularLinks(version, relativePath);
+            const sourceRelativePath =
+                typeof entry.sourcePath === "string" &&
+                entry.sourcePath.length > 0
+                    ? toRelativePath(
+                          entry.sourcePath,
+                          entry.family,
+                          entry.fileName,
+                          "/fonts/original/"
+                      )
+                    : "";
 
             const row = document.createElement("article");
             row.className = "file";
@@ -467,13 +481,15 @@ function render() {
             repoLink.rel = "noopener noreferrer";
             actions.append(repoLink);
 
-            const originalFamilyLink = document.createElement("a");
-            originalFamilyLink.href = `https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/${encodeURIComponent(entry.family)}`;
-            originalFamilyLink.className = "btn";
-            originalFamilyLink.textContent = "🧷 Nerd Fonts source";
-            originalFamilyLink.target = "_blank";
-            originalFamilyLink.rel = "noopener noreferrer";
-            actions.append(originalFamilyLink);
+            if (sourceRelativePath.length > 0) {
+                const sourceFileLink = document.createElement("a");
+                sourceFileLink.href = `./${sourceRelativePath}`;
+                sourceFileLink.className = "btn";
+                sourceFileLink.textContent = "🧷 Open source file";
+                sourceFileLink.target = "_blank";
+                sourceFileLink.rel = "noopener noreferrer";
+                actions.append(sourceFileLink);
+            }
 
             row.append(actions);
 
@@ -506,6 +522,10 @@ async function loadIndex() {
                 family: String(entry.family ?? "unknown"),
                 fileName: String(entry.fileName ?? ""),
                 outputPath: String(entry.outputPath ?? ""),
+                sourcePath:
+                    typeof entry.sourcePath === "string"
+                        ? entry.sourcePath
+                        : undefined,
             }))
             .filter(
                 (entry) =>

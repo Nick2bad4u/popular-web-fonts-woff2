@@ -68,6 +68,7 @@ function parseInteger(raw, fallback) {
 /**
  * @returns {{
  *     allVariants: boolean;
+ *     force: boolean;
  *     includeVariants: readonly string[];
  *     limit: number;
  *     maxVariantsPerFamily: number;
@@ -101,9 +102,11 @@ function parseOptions() {
             : [];
 
     const allVariants = hasFlag("all-variants");
+    const force = hasFlag("force");
 
     return {
         allVariants,
+        force,
         includeVariants,
         limit,
         maxVariantsPerFamily,
@@ -363,7 +366,7 @@ async function main() {
             const targetFileName = `${familyFolder}-${variantId}.ttf`;
             const targetPath = resolve(familyDir, targetFileName);
 
-            if (existsSync(targetPath)) {
+            if (!options.force && existsSync(targetPath)) {
                 const existingStats = statSync(targetPath);
                 if (existingStats.isFile() && existingStats.size > 0) {
                     skippedExistingFiles += 1;
@@ -416,6 +419,7 @@ async function main() {
         downloadedAt: new Date().toISOString(),
         downloadedFamilies,
         allVariants: options.allVariants,
+        force: options.force,
         limit: options.limit,
         maxVariantsPerFamily: options.maxVariantsPerFamily,
         selectedFamilyCount: selectedFamilies.length,
@@ -439,6 +443,9 @@ async function main() {
     );
     process.stdout.write(`Downloaded source files: ${downloadedFiles}\n`);
     process.stdout.write(`Detected source font files: ${sourceCount}\n`);
+    process.stdout.write(
+        `Force mode: ${options.force ? "enabled" : "disabled"}\n`
+    );
 
     if (failures.length > 0) {
         process.stderr.write(

@@ -2,8 +2,20 @@
     "$schema": "https://www.schemastore.org/tsconfig.json",
     "compilerOptions": {
         "isolatedDeclarations": false,
+        "lib": [
+            "DOM",
+            "DOM.Iterable",
+            "ESNext"
+        ],
+        "module": "ESNext",
+        "moduleResolution": "bundler",
         "noEmit": true,
-        "tsBuildInfoFile": "./.cache/tsbuildinfo/tsconfig.vitest-typecheck.tsbuildinfo"
+        "rootDir": ".",
+        "tsBuildInfoFile": "./.cache/tsbuildinfo/tsconfig.vitest-typecheck.tsbuildinfo",
+        "types": [
+            "vite/client",
+            "vitest/globals"
+        ]
     },
     "exclude": [
         ".cache/**",

@@ -8,6 +8,7 @@
         "isolatedDeclarations": false,
         "noCheck": false,
         "noEmit": true,
+        "rootDir": ".",
         "tsBuildInfoFile": "./.cache/tsbuildinfo/tsconfig.eslint.tsbuildinfo"
     },
     "exclude": [
