@@ -61,7 +61,7 @@ Asset fetching and conversion are intentionally **local-only** operations. CI do
 | `fonts/woff2/index.json` | Generated asset index                                |
 | `temp/`                  | Scratch space used during conversion (gitignored)    |
 
-### Step 1 — Download Nerd Fonts sources
+### Step 1 — Download popular web font sources
 
 ```bash
 npm run fonts:download

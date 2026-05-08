@@ -83,7 +83,6 @@ function closeLinkModal() {
 
 /**
  * @param {{
- *     iconClass: string;
  *     label: string;
  *     logo: string;
  *     url: string;
@@ -105,9 +104,9 @@ function openLinkModal(links, fileName, triggerButton) {
 
         const logo = document.createElement("span");
         logo.className = "cdn-logo";
-        logo.classList.add("nf", linkDef.iconClass);
         logo.setAttribute("aria-hidden", "true");
         logo.title = linkDef.label;
+        logo.textContent = linkDef.logo;
         left.append(logo);
 
         const label = document.createElement("div");
@@ -256,7 +255,6 @@ function toCdnUrl(version, relativePath) {
  * @param {string} relativePath
  *
  * @returns {{
- *     iconClass: string;
  *     label: string;
  *     logo: string;
  *     url: string;
@@ -265,31 +263,26 @@ function toCdnUrl(version, relativePath) {
 function buildPopularLinks(version, relativePath) {
     return [
         {
-            iconClass: "nf-md-cloud_outline",
             label: "jsDelivr (GitHub)",
             logo: "JS",
             url: toCdnUrl(version, relativePath),
         },
         {
-            iconClass: "nf-fa-github",
             label: "Raw GitHub",
             logo: "GH",
             url: `https://raw.githubusercontent.com/Nick2bad4u/popular-web-fonts-woff2/${version}/${relativePath}`,
         },
         {
-            iconClass: "nf-dev-npm",
             label: "jsDelivr (npm)",
             logo: "NPM",
             url: `https://cdn.jsdelivr.net/npm/popular-web-fonts-woff2@${version}/${relativePath}`,
         },
         {
-            iconClass: "nf-md-package_variant",
             label: "unpkg (npm)",
             logo: "U",
             url: `https://unpkg.com/popular-web-fonts-woff2@${version}/${relativePath}`,
         },
         {
-            iconClass: "nf-fa-bolt",
             label: "Raw Githack",
             logo: "GK",
             url: `https://rawcdn.githack.com/Nick2bad4u/popular-web-fonts-woff2/${version}/${relativePath}`,
