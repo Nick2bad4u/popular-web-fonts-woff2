@@ -42,7 +42,9 @@
         ".": {
             "import": "./dist/cli.js",
             "types": "./dist/cli.d.ts"
-        }
+        },
+        "./fonts/*": "./fonts/*",
+        "./package.json": "./package.json"
     },
     "main": "./dist/cli.js",
     "types": "./dist/cli.d.ts",
