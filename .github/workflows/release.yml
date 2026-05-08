@@ -1,4 +1,4 @@
-# Release pipeline for nerd-fonts-woff2.
+# Release pipeline for popular-web-fonts-woff2.
 # - Assumes WOFF2 assets are committed in-repo (for raw GitHub/jsDelivr usage).
 # - Publishes npm package via trusted publishing (OIDC) when package is not private.
 # yaml-language-server: $schema=https://www.schemastore.org/github-workflow.json

@@ -1,3 +1,4 @@
+<!-- eslint-disable html/indent -- prettier conflicts -->
 <!doctype html>
 <html lang="en">
     <head>
@@ -34,9 +35,14 @@
             gtag("js", new Date());
             gtag("config", "G-18DR1S6R1T");
         </script>
+        <link
+            href="https://www.nerdfonts.com/assets/css/webfont.css"
+            rel="stylesheet"
+        />
         <style>
             :root {
                 --bg: #0b1020;
+                --popup-shadow: rgba(0, 0, 0, 0.9);
                 --bg-soft: #111a32;
                 --card: #151f3a;
                 --text: #f3f6ff;
@@ -100,6 +106,21 @@
                 letter-spacing: 0.02em;
             }
 
+            .hero-title {
+                display: flex;
+                align-items: center;
+                gap: 0.65rem;
+            }
+
+            .hero-logo {
+                width: 2rem;
+                height: 2rem;
+                border-radius: 0.45rem;
+                border: 1px solid var(--border);
+                background: rgba(12, 21, 48, 0.95);
+                box-shadow: 0 6px 16px var(--shadow);
+            }
+
             .hero p {
                 margin: 0;
                 color: var(--muted);
@@ -123,6 +144,10 @@
                 font-size: 0.85rem;
             }
 
+            .hero-icon {
+                margin-inline-end: 0.45rem;
+            }
+
             .controls {
                 display: grid;
                 gap: 0.9rem;
@@ -141,7 +166,8 @@
                 font-size: 0.88rem;
             }
 
-            input {
+            input,
+            select {
                 padding: 0.65rem 0.8rem;
                 border-radius: 0.5rem;
                 border: 1px solid var(--border);
@@ -150,7 +176,8 @@
                 outline: none;
             }
 
-            input:focus {
+            input:focus,
+            select:focus {
                 border-color: var(--accent);
                 box-shadow: 0 0 0 3px rgba(90, 169, 255, 0.25);
             }
@@ -247,6 +274,74 @@
                 gap: 0.3rem;
             }
 
+            .file-top {
+                display: flex;
+                justify-content: space-between;
+                align-items: start;
+                gap: 0.5rem;
+            }
+
+            .file-badges {
+                display: flex;
+                gap: 0.3rem;
+                flex-wrap: wrap;
+            }
+
+            .badge {
+                font-size: 0.7rem;
+                color: var(--muted);
+                border: 1px solid var(--border);
+                border-radius: 999px;
+                padding: 0.14rem 0.4rem;
+                background: rgba(21, 31, 58, 0.7);
+            }
+
+            .file-actions {
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                margin-top: 0.15rem;
+            }
+
+            .btn {
+                border: 1px solid var(--border);
+                background: rgba(17, 26, 50, 0.85);
+                color: var(--text);
+                border-radius: 0.45rem;
+                padding: 0.34rem 0.6rem;
+                font-size: 0.78rem;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .btn:hover {
+                border-color: var(--accent);
+                color: #ffffff;
+                background: rgba(34, 52, 95, 0.9);
+            }
+
+            .btn-primary {
+                border-color: rgba(102, 240, 196, 0.45);
+                background: rgba(23, 55, 72, 0.75);
+                color: #d8fff2;
+            }
+
+            .btn-primary:hover {
+                border-color: rgba(102, 240, 196, 0.75);
+                background: rgba(28, 67, 87, 0.95);
+            }
+
+            .primary-link {
+                color: var(--accent);
+                text-decoration: none;
+                font-size: 0.82rem;
+                word-break: break-all;
+            }
+
+            .primary-link:hover {
+                text-decoration: underline;
+            }
+
             .file-name {
                 font-family: Consolas, monospace;
                 font-size: 0.85rem;
@@ -280,7 +375,143 @@
                 display: none;
                 visibility: hidden;
             }
+
+            .link-modal {
+                position: fixed;
+                inset: auto;
+                display: none;
+                z-index: 50;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                background: transparent;
+                opacity: 0;
+                transform: translateY(-6px) scale(0.98);
+                transition:
+                    opacity 0.16s ease,
+                    transform 0.16s ease;
+            }
+
+            .link-modal[data-open="true"] {
+                display: block;
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            .link-modal[data-open="true"]::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background: rgba(5, 10, 22, 0.45);
+                backdrop-filter: blur(1px);
+                pointer-events: none;
+            }
+
+            .link-modal::backdrop {
+                display: none;
+            }
+
+            .link-modal-panel {
+                width: min(520px, 96vw);
+                max-height: 78vh;
+                overflow: auto;
+                border: 1px solid var(--border);
+                border-radius: 0.95rem;
+                background: linear-gradient(
+                    165deg,
+                    rgba(23, 34, 62, 0.98),
+                    rgba(13, 19, 38, 0.98)
+                );
+                box-shadow: 0 0 20px 20px var(--popup-shadow);
+                padding: 1rem;
+                backdrop-filter: blur(6px);
+            }
+
+            .link-modal-head {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .link-modal-head h3 {
+                margin: 0;
+                font-size: 1rem;
+                color: #eef4ff;
+                text-shadow:
+                    0 0 1px rgba(255, 255, 255, 0.9),
+                    0 0 8px rgba(11, 16, 32, 0.92);
+            }
+
+            .link-items {
+                display: grid;
+                gap: 0.55rem;
+            }
+
+            .link-item {
+                border: 1px solid var(--border);
+                border-radius: 0.6rem;
+                background: rgba(16, 23, 44, 0.82);
+                padding: 0.6rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .link-item-label {
+                color: var(--accent-2);
+                font-size: 0.82rem;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                gap: 0.4rem;
+            }
+
+            .link-item-name {
+                color: #e7f2ff;
+            }
+
+            .link-item-code {
+                border: 1px solid var(--border);
+                border-radius: 999px;
+                background: rgba(21, 31, 58, 0.72);
+                color: var(--muted);
+                font-size: 0.68rem;
+                padding: 0.1rem 0.35rem;
+            }
+
+            .link-item-left {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                min-width: 0;
+            }
+
+            .cdn-logo {
+                width: 1.65rem;
+                height: 1.65rem;
+                border-radius: 999px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid var(--border);
+                background: rgba(21, 31, 58, 0.8);
+                color: #dce8ff;
+                font-size: 0.92rem;
+                line-height: 1;
+                font-weight: 700;
+                font-family: "Symbols Nerd Font", "Nerd Font", sans-serif;
+                overflow: hidden;
+                flex: 0 0 1.65rem;
+            }
         </style>
+        <link
+            type="image/svg+xml"
+            href="./assets/woff2-favicon.svg"
+            rel="icon"
+        />
         <meta
             content="Searchable browser for Nerd Fonts WOFF2 assets published in this repository."
             name="description"
@@ -318,7 +549,19 @@
 
         <header class="header">
             <section class="hero">
-                <h1>nerd-font-woff2 browser</h1>
+                <h1 class="hero-title">
+                    <img
+                        class="hero-logo"
+                        alt="WOFF2 logo"
+                        height="32"
+                        src="./assets/woff2-favicon.svg"
+                        width="32"
+                    />
+                    <span
+                        ><span class="hero-icon">🔤</span>nerd-font-woff2
+                        browser</span
+                    >
+                </h1>
                 <p>
                     Browse, search, and copy links for all generated WOFF2
                     assets in this repository. Data source:
@@ -328,18 +571,20 @@
                     <span
                         id="stat_families"
                         class="stat-pill"
-                        >Families: -</span
+                        >🧬 Families: -</span
                     >
                     <span
                         id="stat_files"
                         class="stat-pill"
-                        >Files: -</span
+                        >📦 Files: -</span
                     >
                     <span
                         id="stat_version"
                         class="stat-pill"
-                        >Version: main</span
+                        >🏷️ Version: main</span
                     >
+                    <span class="stat-pill">⚡ WOFF2 ready</span>
+                    <span class="stat-pill">🔗 Multi-CDN links</span>
                 </div>
             </section>
         </header>
@@ -361,6 +606,29 @@
                         type="text"
                         value="main"
                     />
+                </label>
+                <label>
+                    Style filter
+                    <select id="style_filter">
+                        <option value="all">All styles</option>
+                        <option value="regular"
+                            >Regular (non-bold/non-italic)</option
+                        >
+                        <option value="italic">Italic/Oblique</option>
+                        <option value="bold">Bold (non-italic)</option>
+                        <option value="bold-italic">Bold + Italic</option>
+                    </select>
+                </label>
+                <label>
+                    Family variant filter
+                    <select id="variant_filter">
+                        <option value="all">All variants</option>
+                        <option value="regular"
+                            >Regular (non-mono/non-propo)</option
+                        >
+                        <option value="mono">Mono</option>
+                        <option value="propo">Propo</option>
+                    </select>
                 </label>
             </section>
 
@@ -386,6 +654,30 @@
                 ></section>
             </section>
         </main>
+
+        <dialog
+            id="link_modal"
+            class="link-modal"
+            aria-labelledby="link_modal_title"
+            data-open="false"
+        >
+            <section class="link-modal-panel">
+                <div class="link-modal-head">
+                    <h3 id="link_modal_title">🔗 CDN links</h3>
+                    <button
+                        id="close_link_modal"
+                        type="button"
+                        class="btn"
+                    >
+                        ✖ Close
+                    </button>
+                </div>
+                <div
+                    id="link_items"
+                    class="link-items"
+                ></div>
+            </section>
+        </dialog>
 
         <script
             type="module"

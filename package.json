@@ -1,27 +1,27 @@
 {
     "$schema": "https://www.schemastore.org/package.json",
-    "name": "nerd-font-woff2",
+    "name": "popular-web-fonts-woff2",
     "version": "1.0.0",
     "private": false,
-    "description": "CLI pipeline for converting Nerd Fonts (and other fonts) from TTF/OTF to WOFF2 assets.",
+    "description": "CLI pipeline for downloading popular web fonts and converting them from TTF/OTF to WOFF2 assets.",
     "keywords": [
         "fonts",
         "woff2",
-        "nerdfonts",
-        "nerd-font",
-        "nerd-fonts",
+        "google-fonts",
+        "popular-fonts",
+        "web-fonts",
         "cli",
         "webfont",
         "ttf",
         "conversion"
     ],
-    "homepage": "https://nick2bad4u.github.io/nerd-fonts-woff2",
+    "homepage": "https://nick2bad4u.github.io/popular-web-fonts-woff2",
     "bugs": {
-        "url": "https://github.com/Nick2bad4u/nerd-fonts-woff2/issues"
+        "url": "https://github.com/Nick2bad4u/popular-web-fonts-woff2/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Nick2bad4u/nerd-fonts-woff2.git"
+        "url": "git+https://github.com/Nick2bad4u/popular-web-fonts-woff2.git"
     },
     "license": "MIT",
     "author": {
@@ -47,9 +47,11 @@
     "main": "./dist/src/cli.js",
     "types": "./dist/src/cli.d.ts",
     "bin": {
-        "nerd-font-woff2": "./nerd-font-woff2"
+        "nerd-font-woff2": "./nerd-font-woff2",
+        "popular-web-fonts-woff2": "./popular-web-fonts-woff2"
     },
     "files": [
+        "popular-web-fonts-woff2",
         "nerd-font-woff2",
         "dist",
         "fonts",
@@ -62,11 +64,11 @@
         "build": "tsc -p tsconfig.json",
         "dev": "node ./src/cli.ts",
         "final": "npm install && npm run build && npm run typecheck && npm run lint:fix:quiet && npm run test && npm run fonts:setup && npm run fonts:check-upstream && npm run fonts:download && npm run fonts:convert && npm run fonts:verify",
-        "fonts:check-upstream": "node ./scripts/check-nerd-fonts-updates.mjs",
+        "fonts:check-upstream": "node ./scripts/check-popular-web-fonts-updates.mjs",
         "fonts:convert": "node ./scripts/bulk-convert-fonts.mjs",
         "fonts:convert:cli": "npm run build && node ./scripts/convert-font-assets.mjs",
         "fonts:convert:dry-run": "node ./scripts/bulk-convert-fonts.mjs --dry-run",
-        "fonts:download": "node ./scripts/download-nerd-fonts-sources.mjs",
+        "fonts:download": "node ./scripts/download-popular-web-fonts-sources.mjs",
         "fonts:local": "npm run fonts:setup && npm run fonts:download && npm run fonts:convert && npm run fonts:verify",
         "fonts:plan": "node ./scripts/bulk-convert-fonts.mjs --dry-run",
         "fonts:setup": "node ./scripts/setup-converter.mjs",

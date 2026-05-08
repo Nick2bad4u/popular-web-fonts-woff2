@@ -15,12 +15,12 @@ export function printHelp(): void {
 export function renderHelpText(): string {
     return arrayJoin(
         [
-            "nerd-font-woff2",
+            "popular-web-fonts-woff2",
             "",
             "Convert local TTF/OTF fonts into WOFF2 files with safe defaults.",
             "",
             "Usage:",
-            "  nerd-font-woff2 --source-dir <path> [options]",
+            "  popular-web-fonts-woff2 --source-dir <path> [options]",
             "",
             "Core options:",
             "  --source-dir <path[,path...]>   Source directory containing .ttf/.otf files (repeatable)",
@@ -48,11 +48,11 @@ export function renderHelpText(): string {
             "  --help                          Show this help",
             "",
             "Examples:",
-            "  nerd-font-woff2 --source-dir ./temp/nerd-fonts --dry-run",
-            "  nerd-font-woff2 --source-dir ./temp/nerd-fonts --convert --confirm",
-            "  nerd-font-woff2 --source-dir ./temp/nerd-fonts --convert --confirm --concurrency 4",
-            "  nerd-font-woff2 --source-dir ./temp/nerd-fonts --convert --confirm --timeout 30000",
-            "  nerd-font-woff2 --manifest ./nerd-font-woff2.config.json --convert --confirm --json",
+            "  popular-web-fonts-woff2 --source-dir ./fonts/original --dry-run",
+            "  popular-web-fonts-woff2 --source-dir ./fonts/original --convert --confirm",
+            "  popular-web-fonts-woff2 --source-dir ./fonts/original --convert --confirm --concurrency 4",
+            "  popular-web-fonts-woff2 --source-dir ./fonts/original --convert --confirm --timeout 30000",
+            "  popular-web-fonts-woff2 --manifest ./popular-web-fonts-woff2.config.json --convert --confirm --json",
         ],
         "\n"
     );

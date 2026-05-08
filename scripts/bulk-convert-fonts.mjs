@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Parallel WOFF2 bulk converter for Nerd Fonts.
+ * Parallel WOFF2 bulk converter for local source fonts.
  *
  * Converts all TTF/OTF source files to WOFF2 using a pool of Worker threads.
  * Each conversion runs in an isolated thread with a per-font timeout so a hung
