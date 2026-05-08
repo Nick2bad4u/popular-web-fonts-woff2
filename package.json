@@ -47,7 +47,7 @@
     "main": "./dist/cli.js",
     "types": "./dist/cli.d.ts",
     "bin": {
-        "popular-web-fonts-woff2": "./popular-web-fonts-woff2"
+        "popular-web-fonts-woff2": "popular-web-fonts-woff2"
     },
     "files": [
         "popular-web-fonts-woff2",
