@@ -1,4 +1,4 @@
-# Contributing to nerd-font-woff2
+# Contributing to popular-web-fonts-woff2
 
 Thanks for helping improve this font conversion pipeline.
 
@@ -27,7 +27,7 @@ npm test
 
 For developers who want in-depth guides see below for detailed documentation on the build pipeline, CLI tool, and release process.
 
-## Developer Guide — nerd-font-woff2
+## Developer Guide — popular-web-fonts-woff2
 
 This document covers the build pipeline, conversion tooling, CLI, and release process for maintainers and contributors.
 
@@ -67,11 +67,11 @@ Asset fetching and conversion are intentionally **local-only** operations. CI do
 npm run fonts:download
 ```
 
-Performs a sparse checkout of `ryanoasis/nerd-fonts` and copies `patched-fonts/**` into `fonts/original/**`.
-Default ref is pinned to `v3.4.0` for reproducibility. Override with:
+Downloads TTF/OTF source files from Google Fonts and other open-source web font repositories into `fonts/original/**`.
+Use `--force` to re-download even if files already exist:
 
 ```bash
-npm run fonts:download -- --ref v3.5.0
+npm run fonts:download -- --force
 ```
 
 ### Step 2 — Convert to WOFF2
@@ -127,19 +127,19 @@ The CLI (`dist/cli.js`) provides fine-grained control for single-directory or ma
 ### Plan only (safe default)
 
 ```bash
-npx nerd-font-woff2 --source-dir ./fonts/original --dry-run
+npx popular-web-fonts-woff2 --source-dir ./fonts/original --dry-run
 ```
 
 ### Convert files
 
 ```bash
-npx nerd-font-woff2 --source-dir ./fonts/original --convert --confirm
+npx popular-web-fonts-woff2 --source-dir ./fonts/original --convert --confirm
 ```
 
 ### Convert with JSON summary and index file
 
 ```bash
-npx nerd-font-woff2 \
+npx popular-web-fonts-woff2 \
   --source-dir ./fonts/original \
   --convert \
   --confirm \
@@ -150,7 +150,7 @@ npx nerd-font-woff2 \
 ### Use a manifest file
 
 ```bash
-npx nerd-font-woff2 --manifest ./nerd-font-woff2.config.json --convert --confirm
+npx popular-web-fonts-woff2 --manifest ./popular-web-fonts-woff2.config.json --convert --confirm
 ```
 
 Example manifest:
@@ -231,7 +231,7 @@ git commit -m "Update generated WOFF2 assets"
 
 ## npm packaging
 
-- `bin` entry: `nerd-font-woff2`
+- `bin` entry: `popular-web-fonts-woff2`
 - `prepack` runs `npm run build` so published tarballs include compiled `dist/` output
 - Published files are restricted to runtime essentials (`dist/`, `fonts/woff2/`, wrapper, README, LICENSE)
 - Release workflow validates that committed assets exist before creating a GitHub release

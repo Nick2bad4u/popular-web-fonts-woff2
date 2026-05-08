@@ -1,13 +1,13 @@
-# nerd-font-woff2
+# popular-web-fonts-woff2
 
 [![npm license.](https://flat.badgen.net/npm/license/popular-web-fonts-woff2?color=purple)](https://github.com/Nick2bad4u/popular-web-fonts-woff2/blob/main/LICENSE) [![npm total downloads.](https://flat.badgen.net/npm/dt/popular-web-fonts-woff2?color=pink)](https://www.npmjs.com/package/popular-web-fonts-woff2) [![latest GitHub release.](https://flat.badgen.net/github/release/Nick2bad4u/popular-web-fonts-woff2?color=cyan)](https://github.com/Nick2bad4u/popular-web-fonts-woff2/releases) [![GitHub stars.](https://flat.badgen.net/github/stars/Nick2bad4u/popular-web-fonts-woff2?color=yellow)](https://github.com/Nick2bad4u/popular-web-fonts-woff2/stargazers) [![GitHub forks.](https://flat.badgen.net/github/forks/Nick2bad4u/popular-web-fonts-woff2?color=green)](https://github.com/Nick2bad4u/popular-web-fonts-woff2/forks) [![GitHub open issues.](https://flat.badgen.net/github/open-issues/Nick2bad4u/popular-web-fonts-woff2?color=red)](https://github.com/Nick2bad4u/popular-web-fonts-woff2/issues) [![codecov.](https://flat.badgen.net/codecov/github/Nick2bad4u/popular-web-fonts-woff2?color=blue)](https://codecov.io/gh/Nick2bad4u/popular-web-fonts-woff2)
 
-Ready-to-use **Nerd Fonts in WOFF2 format** — use them in any website or app via CDN link, or install them through npm.
+Ready-to-use **popular web fonts in WOFF2 format** — use them in any website or app via CDN link, or install them through npm.
 
 No build step needed. No tools to install. Just copy a URL.
 
-> Fonts are generated from [Nerd Fonts v3.4.0](https://github.com/ryanoasis/nerd-fonts/releases/tag/v3.4.0)
-> and committed directly to this repository so they can be served from a stable CDN URL.
+> Fonts are sourced from [Google Fonts](https://fonts.google.com/) and other popular open-source web font families.
+> They are committed directly to this repository so they can be served from a stable CDN URL.
 
 ---
 
@@ -19,8 +19,8 @@ Pick any font from the [available families](#available-font-families) below and 
 
 ```css
 @font-face {
-  font-family: "JetBrains Mono Nerd";
-  src: url("https://cdn.jsdelivr.net/gh/Nick2bad4u/popular-web-fonts-woff2@v1.0.0/fonts/woff2/JetBrainsMono/JetBrainsMonoNerdFont-Regular.woff2")
+  font-family: "Inter";
+  src: url("https://cdn.jsdelivr.net/gh/Nick2bad4u/popular-web-fonts-woff2@v1.0.0/fonts/woff2/Inter/Inter-regular.woff2")
     format("woff2");
   font-display: swap;
 }
@@ -30,7 +30,7 @@ Then use it in your CSS:
 
 ```css
 body {
-  font-family: "JetBrains Mono Nerd", monospace;
+  font-family: "Inter", sans-serif;
 }
 ```
 
@@ -38,8 +38,8 @@ body {
 
 ```css
 @font-face {
-  font-family: "JetBrains Mono Nerd";
-  src: url("https://raw.githubusercontent.com/Nick2bad4u/popular-web-fonts-woff2/v1.0.0/fonts/woff2/JetBrainsMono/JetBrainsMonoNerdFont-Regular.woff2")
+  font-family: "Inter";
+  src: url("https://raw.githubusercontent.com/Nick2bad4u/popular-web-fonts-woff2/v1.0.0/fonts/woff2/Inter/Inter-regular.woff2")
     format("woff2");
   font-display: swap;
 }
@@ -57,11 +57,11 @@ All font files follow this pattern:
 https://cdn.jsdelivr.net/gh/Nick2bad4u/popular-web-fonts-woff2@<version>/fonts/woff2/<Family>/<FileName>.woff2
 ```
 
-| Part         | Example                         |
-| ------------ | ------------------------------- |
-| `<version>`  | `v1.0.0`                        |
-| `<Family>`   | `JetBrainsMono`                 |
-| `<FileName>` | `JetBrainsMonoNerdFont-Regular` |
+| Part         | Example         |
+| ------------ | --------------- |
+| `<version>`  | `v1.0.0`        |
+| `<Family>`   | `Inter`         |
+| `<FileName>` | `Inter-regular` |
 
 Find available files by browsing the [`fonts/woff2/`](./fonts/woff2) folder in this repository, or see the full [asset index](./fonts/woff2/index.json).
 
@@ -74,7 +74,7 @@ You can also browse a searchable index page on GitHub Pages: [`/index.html`](./i
 If you use a bundler (Webpack, Vite, etc.) or a Node.js project, you can install the fonts as an npm package:
 
 ```bash
-npm install nerd-font-woff2
+npm install popular-web-fonts-woff2
 ```
 
 Then reference the files from `node_modules`:
@@ -82,8 +82,8 @@ Then reference the files from `node_modules`:
 ```css
 /* Vite / webpack — import the font file directly */
 @font-face {
-  font-family: "JetBrains Mono Nerd";
-  src: url("nerd-font-woff2/fonts/woff2/JetBrainsMono/JetBrainsMonoNerdFont-Regular.woff2")
+  font-family: "Inter";
+  src: url("popular-web-fonts-woff2/fonts/woff2/Inter/Inter-regular.woff2")
     format("woff2");
   font-display: swap;
 }
@@ -97,9 +97,9 @@ import { join } from "node:path";
 import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
-const pkgDir = join(require.resolve("nerd-font-woff2/package.json"), "..");
+const pkgDir = join(require.resolve("popular-web-fonts-woff2/package.json"), "..");
 const fontBuffer = readFileSync(
-  join(pkgDir, "fonts", "woff2", "JetBrainsMono", "JetBrainsMonoNerdFont-Regular.woff2")
+  join(pkgDir, "fonts", "woff2", "Inter", "Inter-regular.woff2")
 );
 ```
 
@@ -110,7 +110,7 @@ const fontBuffer = readFileSync(
 ### Usage
 
 ```bash
-npx nerd-font-woff2 --source-dir ./fonts/original [options]
+npx popular-web-fonts-woff2 --source-dir ./fonts/original [options]
 ```
 
 ### Execution flags
@@ -129,105 +129,67 @@ npx nerd-font-woff2 --source-dir ./fonts/original [options]
 
 ```bash
 # Plan only (safe default)
-npx nerd-font-woff2 --source-dir ./fonts/original
+npx popular-web-fonts-woff2 --source-dir ./fonts/original
 
 # Convert with explicit safety confirmation
-npx nerd-font-woff2 --source-dir ./fonts/original --convert --confirm
+npx popular-web-fonts-woff2 --source-dir ./fonts/original --convert --confirm
 
 # Faster conversion with custom concurrency and timeout
-npx nerd-font-woff2 --source-dir ./fonts/original --convert --confirm --concurrency 4 --timeout 120000
+npx popular-web-fonts-woff2 --source-dir ./fonts/original --convert --confirm --concurrency 4 --timeout 120000
 
 # JSON summary and explicit index file
-npx nerd-font-woff2 --source-dir ./fonts/original --convert --confirm --json --index-file ./fonts/woff2/index.json
+npx popular-web-fonts-woff2 --source-dir ./fonts/original --convert --confirm --json --index-file ./fonts/woff2/index.json
 ```
 
 ---
 
 ## Available font families
 
-All families from [Nerd Fonts v3.4.0](https://github.com/ryanoasis/nerd-fonts/releases/tag/v3.4.0) are included.
-Browse the full list in the [`fonts/woff2/`](./fonts/woff2) directory.
+All popular web font families are included.
+Browse the full list in the [`fonts/woff2/`](./fonts/woff2) directory, or search the [interactive browser](./index.html).
 
-Popular families:
+Selected families:
 
-| Family                | Folder name             |
-| --------------------- | ----------------------- |
-| 0xProto               | `0xProto`               |
-| 3270                  | `3270`                  |
-| Agave                 | `Agave`                 |
-| AnonymousPro          | `AnonymousPro`          |
-| Arimo                 | `Arimo`                 |
-| AurulentSansMono      | `AurulentSansMono`      |
-| BigBlueTerminal       | `BigBlueTerminal`       |
-| BitstreamVeraSansMono | `BitstreamVeraSansMono` |
-| CascadiaCode          | `CascadiaCode`          |
-| CaskaydiaCove         | `CaskaydiaCove`         |
-| CaskaydiaMono         | `CaskaydiaMono`         |
-| CodeNewRoman          | `CodeNewRoman`          |
-| ComicShannsMono       | `ComicShannsMono`       |
-| CommitMono            | `CommitMono`            |
-| Cousine               | `Cousine`               |
-| D2Coding              | `D2Coding`              |
-| DaddyTimeMono         | `DaddyTimeMono`         |
-| DejaVuSansMono        | `DejaVuSansMono`        |
-| DroidSansMono         | `DroidSansMono`         |
-| EnvyCodeR             | `EnvyCodeR`             |
-| FantasqueSansMono     | `FantasqueSansMono`     |
-| FiraCode              | `FiraCode`              |
-| FiraMono              | `FiraMono`              |
-| GeistMono             | `GeistMono`             |
-| Go-Mono               | `Go-Mono`               |
-| Gohu                  | `Gohu`                  |
-| GohuFont              | `GohuFont`              |
-| Hack                  | `Hack`                  |
-| Hasklig               | `Hasklig`               |
-| HeavyData             | `HeavyData`             |
-| Hermit                | `Hermit`                |
-| iA-Writer             | `iA-Writer`             |
-| IBMPlexMono           | `IBMPlexMono`           |
-| Inconsolata           | `Inconsolata`           |
-| InconsolataGo         | `InconsolataGo`         |
-| InconsolataLGC        | `InconsolataLGC`        |
-| IntelOneMono          | `IntelOneMono`          |
-| Iosevka               | `Iosevka`               |
-| IosevkaTerm           | `IosevkaTerm`           |
-| IosevkaTermSlab       | `IosevkaTermSlab`       |
-| JetBrainsMono         | `JetBrainsMono`         |
-| Lekton                | `Lekton`                |
-| LiberationMono        | `LiberationMono`        |
-| Lilex                 | `Lilex`                 |
-| MartianMono           | `MartianMono`           |
-| Meslo                 | `Meslo`                 |
-| Monofur               | `Monofur`               |
-| Monoid                | `Monoid`                |
-| Mononoki              | `Mononoki`              |
-| MPlus                 | `MPlus`                 |
-| NerdFontsSymbolsOnly  | `NerdFontsSymbolsOnly`  |
-| Noto                  | `Noto`                  |
-| OpenDyslexic          | `OpenDyslexic`          |
-| Overpass              | `Overpass`              |
-| ProFont               | `ProFont`               |
-| ProggyClean           | `ProggyClean`           |
-| Recursive             | `Recursive`             |
-| RobotoMono            | `RobotoMono`            |
-| ShareTechMono         | `ShareTechMono`         |
-| SourceCodePro         | `SourceCodePro`         |
-| SpaceMono             | `SpaceMono`             |
-| Terminus              | `Terminus`              |
-| Tinos                 | `Tinos`                 |
-| Ubuntu                | `Ubuntu`                |
-| UbuntuMono            | `UbuntuMono`            |
-| UbuntuSans            | `UbuntuSans`            |
-| VictorMono            | `VictorMono`            |
-| ZedMono               | `ZedMono`               |
+| Family        | Folder name     |
+| ------------- | --------------- |
+| ABeeZee       | `ABeeZee`       |
+| Anton         | `Anton`         |
+| Archivo       | `Archivo`       |
+| Arimo         | `Arimo`         |
+| Barlow        | `Barlow`        |
+| Bitter        | `Bitter`        |
+| Cabin         | `Cabin`         |
+| Cairo         | `Cairo`         |
+| Caveat        | `Caveat`        |
+| Comfortaa     | `Comfortaa`     |
+| DancingScript | `DancingScript` |
+| DMSans        | `DMSans`        |
+| Dosis         | `Dosis`         |
+| EBGaramond    | `EBGaramond`    |
+| Exo2          | `Exo2`          |
+| FiraSans      | `FiraSans`      |
+| Geist         | `Geist`         |
+| Heebo         | `Heebo`         |
+| IBMPlexMono   | `IBMPlexMono`   |
+| IBMPlexSans   | `IBMPlexSans`   |
+| Inconsolata   | `Inconsolata`   |
+| Inter         | `Inter`         |
+| JetBrainsMono | `JetBrainsMono` |
+| Kanit         | `Kanit`         |
+| Karla         | `Karla`         |
+| Lato          | `Lato`          |
+| Lexend        | `Lexend`        |
+| Lora          | `Lora`          |
+| Manrope       | `Manrope`       |
+| MaterialIcons | `MaterialIcons` |
+| MavenPro      | `MavenPro`      |
 
 ---
 
-## What are Nerd Fonts?
+## About popular web fonts
 
-[Nerd Fonts](https://www.nerdfonts.com/) patches developer-targeted fonts with a large number of glyphs (icons) from popular icon sets — including Devicons, Font Awesome, Material Design Icons, and many others.
-
-They are widely used in terminal emulators, code editors, and shell prompts (Starship, Oh-My-Zsh, Powerlevel10k, etc.).
+Popular web fonts are widely-used open-source typefaces distributed through [Google Fonts](https://fonts.google.com/) and other open font registries.
+They are used across millions of websites for body text, headings, UI elements, and code blocks.
 
 ---
 
@@ -241,7 +203,7 @@ Pin the version in your CDN URLs to avoid unexpected changes.
 
 ## License
 
-Fonts are distributed under their respective upstream licenses (see each family's source in [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)).
+Fonts are distributed under their respective upstream licenses (see each family's source on [Google Fonts](https://fonts.google.com/) or the upstream project page).
 This project's tooling and scripts are licensed under the [MIT License](./LICENSE).
 
 ---
@@ -251,7 +213,7 @@ This project's tooling and scripts are licensed under the [MIT License](./LICENS
 - [Releases](https://github.com/Nick2bad4u/popular-web-fonts-woff2/releases)
 - [npm package](https://www.npmjs.com/package/popular-web-fonts-woff2)
 - [Asset index](./fonts/woff2/index.json)
-- [Nerd Fonts upstream](https://github.com/ryanoasis/nerd-fonts)
+- [Google Fonts](https://fonts.google.com/)
 - [Contributing](./CONTRIBUTING.md)
 - [Security](./SECURITY.md)
 - [Developer guide](./CONTRIBUTING.md#in-depth-developer-documentation)
