@@ -61,7 +61,7 @@ jobs:
 
         steps:
             - name: Harden the runner (Audit all outbound calls)
-              uses: step-security/harden-runner@8d3c67de8e2fe68ef647c8db1e6a09f647780f40 # v2.19.0
+              uses: step-security/harden-runner@a5ad31d6a139d249332a2605b85202e8c0b78450 # v2.19.1
               with:
                   egress-policy: audit
 
@@ -222,7 +222,7 @@ jobs:
               run: echo "Skipping npm publish because package.json has private=true."
 
             - name: Create GitHub release
-              uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
+              uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
               with:
                   tag_name: ${{ steps.meta.outputs.tag }}
                   name: ${{ steps.meta.outputs.tag }}
