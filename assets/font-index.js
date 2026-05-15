@@ -354,6 +354,13 @@ function matchesFilters(entry, styleFilter, variantFilter) {
     return styleOk && variantOk;
 }
 
+/**
+ *
+ */
+
+/**
+ *
+ */
 function render() {
     const query = searchInput.value.trim().toLowerCase();
     const version = versionInput.value.trim() || "main";
@@ -494,6 +501,13 @@ function render() {
     }
 }
 
+/**
+ *
+ */
+
+/**
+ *
+ */
 async function loadIndex() {
     try {
         const response = await fetch("./fonts/woff2/index.json", {
