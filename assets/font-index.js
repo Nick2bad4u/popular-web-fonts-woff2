@@ -355,11 +355,10 @@ function matchesFilters(entry, styleFilter, variantFilter) {
 }
 
 /**
+ * Render the list of font files based on the current search query and filter
+ * settings.
  *
- */
-
-/**
- *
+ * @returns {void}
  */
 function render() {
     const query = searchInput.value.trim().toLowerCase();
@@ -502,11 +501,10 @@ function render() {
 }
 
 /**
+ * Load and parse the index.json file, then trigger initial rendering.
  *
- */
-
-/**
- *
+ * @returns {Promise<void>} A promise that resolves when the index is loaded and
+ *   rendered.
  */
 async function loadIndex() {
     try {
