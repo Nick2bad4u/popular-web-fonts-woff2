@@ -10,7 +10,7 @@ import {
     stat,
     writeFile,
 } from "node:fs/promises";
-import path from "node:path";
+import * as path from "node:path";
 import { pathToFileURL } from "node:url";
 import {
     arrayAt,
