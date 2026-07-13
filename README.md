@@ -19,10 +19,10 @@ Pick any font from the [available families](#available-font-families) below and 
 
 ```css
 @font-face {
-  font-family: "Inter";
-  src: url("https://cdn.jsdelivr.net/gh/Nick2bad4u/popular-web-fonts-woff2@v1.0.0/fonts/woff2/Inter/Inter-regular.woff2")
-    format("woff2");
-  font-display: swap;
+ font-family: "Inter";
+ src: url("https://cdn.jsdelivr.net/gh/Nick2bad4u/popular-web-fonts-woff2@v1.0.0/fonts/woff2/Inter/Inter-regular.woff2")
+  format("woff2");
+ font-display: swap;
 }
 ```
 
@@ -30,7 +30,7 @@ Then use it in your CSS:
 
 ```css
 body {
-  font-family: "Inter", sans-serif;
+ font-family: "Inter", sans-serif;
 }
 ```
 
@@ -38,10 +38,10 @@ body {
 
 ```css
 @font-face {
-  font-family: "Inter";
-  src: url("https://raw.githubusercontent.com/Nick2bad4u/popular-web-fonts-woff2/v1.0.0/fonts/woff2/Inter/Inter-regular.woff2")
-    format("woff2");
-  font-display: swap;
+ font-family: "Inter";
+ src: url("https://raw.githubusercontent.com/Nick2bad4u/popular-web-fonts-woff2/v1.0.0/fonts/woff2/Inter/Inter-regular.woff2")
+  format("woff2");
+ font-display: swap;
 }
 ```
 

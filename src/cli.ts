@@ -103,7 +103,10 @@ interface ManifestFile {
     tempDir?: string;
 }
 
-type SingleFontResult = "converted" | "failed-break" | "failed-continue";
+type SingleFontResult =
+    | "converted"
+    | "failed-break"
+    | "failed-continue";
 
 // ─── Error reporting ──────────────────────────────────────────────────────────
 
@@ -749,7 +752,7 @@ async function loadManifest(
             ok: true,
         };
     } catch (error) {
-        const message = error instanceof Error ? error.message : String(error);
+        const message = Error.isError(error) ? error.message : String(error);
         reportError(
             `failed to read --manifest file: ${message}`,
             "validation_error"

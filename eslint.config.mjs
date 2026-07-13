@@ -28,7 +28,11 @@ const htmlCompatibilityPlugin = {
 /** @type {import("eslint").Linter.Config[]} */
 const config = [
     {
-        ignores: ["fonts/original/**", "fonts/woff2/**"],
+        ignores: [
+            "assets/font-index.js",
+            "fonts/original/**",
+            "fonts/woff2/**",
+        ],
     },
 
     ...nickTwoBadFourU.configs.all,
@@ -128,6 +132,10 @@ const config = [
         // This CLI intentionally operates on validated runtime paths.
         files: ["src/cli.ts"],
         rules: {
+            // The shared rules currently conflict: unicorn prefers Error.isError,
+            // while canonical rejects the same native static method.
+            "canonical/no-import-namespace-destructure": "off",
+            "canonical/no-use-extend-native": "off",
             "runtime-cleanup/no-floating-child-processes": "off",
             "security/detect-non-literal-fs-filename": "off",
             "unicorn/consistent-boolean-name": "off",
